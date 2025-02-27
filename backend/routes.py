@@ -8,9 +8,11 @@ animals = {
     "elephant": {"name": "Elephant", "species": "Loxodonta africana", "habitat": "Savannah"}
 }
 
+
 @animal_blueprint.route('/animals', methods=['GET'])
 def get_animals():
     return jsonify(list(animals.values()))
+
 
 @animal_blueprint.route('/animals/<string:animal_name>', methods=['GET'])
 def get_animal(animal_name):
@@ -18,6 +20,7 @@ def get_animal(animal_name):
     if not animal:
         abort(404, description="Animal not found")
     return jsonify(animal)
+
 
 @animal_blueprint.route('/animals', methods=['POST'])
 def add_animal():

@@ -1,18 +1,15 @@
-# Use an official Python runtime as a parent image
-FROM python:3.13.2-slim
+FROM python:3.13.2
+RUN useradd app
 
-# Set the working directory in the container
+USER app
 WORKDIR /app
 
-# Copy the requirements file and install dependencies
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+COPY requirements.txt requirements.txt
+RUN pip install --no-cache-dir --target=./packages -r requirements.txt
+env PYTHONPATH=/app/packages
 
-# Copy the rest of the application code
 COPY . .
 
-# Expose port 5000 for the Flask app
 EXPOSE 5000
 
-# Define the default command to run the application
 CMD ["python", "main.py"]

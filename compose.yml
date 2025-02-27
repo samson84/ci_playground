@@ -1,0 +1,10 @@
+services:
+  app:
+    build: .
+    develop:
+      watch:
+        - action: sync+restart
+          path: .
+          target: /app
+    ports:
+      - '5000:5000'
