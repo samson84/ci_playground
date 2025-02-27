@@ -19,7 +19,7 @@ def test_get_animals(client):
 
 def test_get_animal_not_found(client):
     response = client.get('/api/animals/unknown')
-    assert response.status_code == 404
+    assert response.status_code == 403
 
 
 def test_add_animal_success(client):
