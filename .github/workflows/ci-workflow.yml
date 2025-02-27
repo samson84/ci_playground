@@ -1,5 +1,5 @@
 name: CI pipeline
-on: [workflow_dispatch] # Run it from the UI.
+on: [push] # Run it from the UI.
 env:
   DOCKER_USERNAME: 'samson84cc'
   DOCKER_REPO: 'animal-shelter'
