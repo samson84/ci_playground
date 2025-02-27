@@ -19,7 +19,7 @@ jobs:
         uses: docker/login-action@v3
         with: 
           username: ${{ env.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
       - name: Push
         run: docker push ${{ env.DOCKER_USERNAME }}/${{ env.DOCKER_REPO }}:${{github.sha}}
 
