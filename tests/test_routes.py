@@ -2,7 +2,7 @@ import pytest
 from backend import create_app
 
 
-@pytest.fixture
+@pytest.fixture(name='client')
 def create_client():
     app = create_app()
     app.config['TESTING'] = True

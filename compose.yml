@@ -1,6 +1,7 @@
 services:
   app:
-    build: .
+    build:
+      context: .
     develop:
       watch:
         - action: sync+restart
@@ -8,3 +9,4 @@ services:
           target: /app
     ports:
       - '5000:5000'
+

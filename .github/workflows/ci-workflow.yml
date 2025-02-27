@@ -1,0 +1,20 @@
+name: CI pipeline
+on: [workflow_dispatch] # Run it from the UI.
+env:
+  DOCKER_USERNAME: 'samson84cc'
+  DOCKER_REPO: 'animal-shelter'
+jobs:
+  build-job:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout
+        uses: actions/checkout@4
+      - name: Build
+        run: docker build -t ${{ env.DOCKER_USERNAME }}/${{ env.DOCKER_REPO }}:${{github.sha}} .
+      - name: Lint
+        run: docker run ${{ env.DOCKER_USERNAME }}/${{ env.DOCKER_REPO }}:${{github.sha}} python -m pylint
+      - name: Test
+        run: docker run ${{ env.DOCKER_USERNAME }}/${{ env.DOCKER_REPO }}:${{github.sha}} python -m pytest tests
+      - name: Push
+        run: echo Todo
+
